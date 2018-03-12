@@ -1,7 +1,10 @@
 package com.example.jinny.story;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.jinny.story.Adapter.StoryListViewAdapter;
@@ -25,5 +28,15 @@ public class MainActivity extends AppCompatActivity {
         storyListViewAdapter = new StoryListViewAdapter(storyModelList);
 
         lvStory.setAdapter(storyListViewAdapter);
+
+        lvStory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                StoryModel storyModel = storyModelList.get(i);
+                Intent intent = new Intent(MainActivity.this, StoryActivity.class);
+                intent.putExtra("story", storyModel);
+                startActivity(intent);
+            }
+        });
     }
 }

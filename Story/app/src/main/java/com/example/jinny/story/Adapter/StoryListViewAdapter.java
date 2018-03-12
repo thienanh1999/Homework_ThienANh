@@ -50,7 +50,7 @@ public class StoryListViewAdapter extends BaseAdapter {
 
         tvAuthor.setText(storyModel.author);
         tvTitle.setText(storyModel.title);
-        Picasso.with(viewGroup.getContext()).load(storyModel.image).resize(200,200).into(ivImage);
+        Picasso.get().load(storyModel.image).resize(200,200).into(ivImage);
 
         return view;
     }
