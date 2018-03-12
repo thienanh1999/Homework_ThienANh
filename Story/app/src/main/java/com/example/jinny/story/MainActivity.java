@@ -39,4 +39,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        List<StoryModel> storyModelList = DatabaseManager.getInstance(this).getListStory();
+        StoryListViewAdapter storyListViewAdapter = new StoryListViewAdapter(storyModelList);
+        lvStory.setAdapter(storyListViewAdapter);
+    }
 }

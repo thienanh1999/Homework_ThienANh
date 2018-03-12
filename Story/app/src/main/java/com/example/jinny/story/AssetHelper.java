@@ -1,4 +1,4 @@
-package com.example.jinny.toeic;
+package com.example.jinny.story;
 
 import android.content.Context;
 

@@ -1,11 +1,14 @@
 package com.example.jinny.story.Adapter;
 
+import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.jinny.story.Database.StoryModel;
@@ -47,10 +50,12 @@ public class StoryListViewAdapter extends BaseAdapter {
         TextView tvTitle = view.findViewById(R.id.tv_title);
         TextView tvAuthor = view.findViewById(R.id.tv_author);
         ImageView ivImage = view.findViewById(R.id.iv_image);
+        LinearLayout llItem = view.findViewById(R.id.ll_item);
 
         tvAuthor.setText(storyModel.author);
         tvTitle.setText(storyModel.title);
         Picasso.get().load(storyModel.image).resize(200,200).into(ivImage);
+        if (storyModel.bookmark == 1) llItem.setBackgroundColor(Color.CYAN);
 
         return view;
     }
