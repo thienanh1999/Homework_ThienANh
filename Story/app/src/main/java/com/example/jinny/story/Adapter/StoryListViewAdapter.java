@@ -50,12 +50,12 @@ public class StoryListViewAdapter extends BaseAdapter {
         TextView tvTitle = view.findViewById(R.id.tv_title);
         TextView tvAuthor = view.findViewById(R.id.tv_author);
         ImageView ivImage = view.findViewById(R.id.iv_image);
-        LinearLayout llItem = view.findViewById(R.id.ll_item);
+        LinearLayout llBookmark = view.findViewById(R.id.ll_bookmark);
 
         tvAuthor.setText(storyModel.author);
         tvTitle.setText(storyModel.title);
         Picasso.get().load(storyModel.image).resize(200,200).into(ivImage);
-        if (storyModel.bookmark == 1) llItem.setBackgroundColor(Color.CYAN);
+        if (storyModel.bookmark == 1) llBookmark.setBackgroundColor(Color.RED);
 
         return view;
     }

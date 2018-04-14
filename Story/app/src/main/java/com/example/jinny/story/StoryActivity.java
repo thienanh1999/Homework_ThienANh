@@ -1,9 +1,10 @@
 package com.example.jinny.story;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +22,8 @@ public class StoryActivity extends AppCompatActivity {
     TextView tvDescription;
     ImageView ivImage;
     ImageView ivBookmark;
+    ImageView ivBookmarked;
+    Button btRead;
     StoryModel storyModel;
 
     @Override
@@ -36,16 +39,28 @@ public class StoryActivity extends AppCompatActivity {
         tvDescription = findViewById(R.id.tv_detail);
         ivImage = findViewById(R.id.iv_image);
         ivBookmark = findViewById(R.id.iv_bookmark);
+        btRead = findViewById(R.id.bt_read);
+        ivBookmarked = findViewById(R.id.iv_bookmarked);
 
         tvTitle.setText(storyModel.title);
         tvAuthor.setText(storyModel.author);
         tvDescription.setText(storyModel.description);
         Picasso.get().load(storyModel.image).resize(100, 100).into(ivImage);
+        if (storyModel.bookmark == 1) ivBookmarked.setVisibility(View.VISIBLE);
     }
 
-    @OnClick(R.id.iv_bookmark)
-    public void onViewClicked() {
-        DatabaseManager.getInstance(this).bookmark(storyModel);
-        Log.d(TAG, "éc éc");
+    @OnClick({R.id.iv_bookmark, R.id.bt_read})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.iv_bookmark:
+                DatabaseManager.getInstance(this).bookmark(storyModel);
+                ivBookmarked.setVisibility(View.VISIBLE);
+                break;
+            case R.id.bt_read:
+                Intent intent = new Intent(StoryActivity.this, ReadActivity.class);
+                intent.putExtra("story", storyModel);
+                startActivity(intent);
+                break;
+        }
     }
 }

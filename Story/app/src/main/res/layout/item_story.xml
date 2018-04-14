@@ -11,6 +11,12 @@
     tools:context="com.example.jinny.story.MainActivity">
 
     <LinearLayout
+        android:id="@+id/ll_bookmark"
+        android:layout_width="5dp"
+        android:layout_height="match_parent"
+        android:background="#00eeff"></LinearLayout>
+
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_weight="2"
         android:layout_margin="10dp"
