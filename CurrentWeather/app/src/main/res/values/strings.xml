@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CurrentWeather</string>
+    <string name="APPID">33b80c38fdcf8f150f3a496480097fb9</string>
+    <string name="city">London</string>
+</resources>
